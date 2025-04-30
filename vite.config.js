@@ -8,9 +8,6 @@ export default defineConfig({
   server: {
     fs: {
       strict: false
-    },
-    headers: {
-      'Content-Type': 'application/javascript'
     }
   },
   build: {
@@ -22,6 +19,5 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react-kakao-maps-sdk']
-  },
-  assetsInclude: ['**/*.js']
+  }
 });

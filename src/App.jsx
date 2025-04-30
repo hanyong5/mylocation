@@ -9,30 +9,21 @@ function App() {
   });
 
   useEffect(() => {
-    const loadKakaoMap = () => {
-      if (window.kakao && window.kakao.maps) {
-        setIsMapLoaded(true);
-        return;
-      }
+    // 카카오맵 스크립트 동적 로드
+    const script = document.createElement('script');
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=05222ace53571c8fbb636c91def0fbc2&autoload=false`;
+    script.async = true;
 
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=05222ace53571c8fbb636c91def0fbc2';
-      
-      script.onload = () => {
+    script.onload = () => {
+      window.kakao.maps.load(() => {
         setIsMapLoaded(true);
-      };
-
-      document.head.appendChild(script);
+      });
     };
 
-    loadKakaoMap();
+    document.head.appendChild(script);
 
     return () => {
-      const script = document.querySelector('script[src*="dapi.kakao.com"]');
-      if (script) {
-        document.head.removeChild(script);
-      }
+      document.head.removeChild(script);
     };
   }, []);
 
