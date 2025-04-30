@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@theme {
+
+  
+  /* Container 설정 */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-2xl: 1280px;
+
+  /* 폰트 패밀리 설정 */
+  --font-sans: "Pretendard", "sans-serif";
+  --font-body: "Pretendard", "sans-serif";
+  --font-heading: "Pretendard", "sans-serif";
+
+  /* 폰트 가중치 설정 */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* 폰트 사이즈 설정 */
+  --text-4xl: 34px;
+  --text-4xl--line-height: 1.25;
+  
+  --text-2xl: 24px;
+  --text-2xl--line-height: 1.25;
+  
+  --text-xl: 20px;
+  --text-xl--line-height: 1.25;
+  
+  --text-base: 16px;
+  --text-base--line-height: 1.75;
+  
+  --text-sm: 14px;
+  --text-sm--line-height: 1.75;
+  
+  --text-xs: 12px;
+  --text-xs--line-height: 1.75;
+
+  /* 색상 설정 */
+  --color-primary: #1D4ED8;
+  --color-secondary: #64748B;
+  --color-success: #22C55E;
+  --color-warning: #FACC15;
+  --color-error: #EF4444;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  
+  /* 그레이 스케일 */
+  --color-gray-900: #111827;
+  --color-gray-700: #374151;
+  --color-gray-500: #6B7280;
+  --color-gray-300: #D1D5DB;
+  --color-gray-100: #F3F4F6;
+
+}
