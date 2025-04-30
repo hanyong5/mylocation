@@ -1,23 +1,24 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/', // 꼭 이 값을 설정해야 Netlify에서 정적 자산 경로를 제대로 인식함
   server: {
     fs: {
-      strict: false
-    }
+      strict: false,
+    },
   },
   build: {
     rollupOptions: {
       output: {
-        manualChunks: undefined
-      }
-    }
+        manualChunks: undefined,
+      },
+    },
   },
   optimizeDeps: {
-    include: ['react-kakao-maps-sdk']
-  }
+    include: ['react-kakao-maps-sdk'],
+  },
 });
