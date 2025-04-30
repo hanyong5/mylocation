@@ -29,12 +29,28 @@ function App() {
 
   useEffect(() => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        setPosition({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      });
+      // watchPosition을 사용하여 위치 변경을 지속적으로 감지
+      const watchId = navigator.geolocation.watchPosition(
+        position => {
+          setPosition({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        error => {
+          console.error('위치 정보를 가져오는데 실패했습니다:', error);
+        },
+        {
+          enableHighAccuracy: true, // 높은 정확도 사용
+          timeout: 5000, // 5초 타임아웃
+          maximumAge: 0 // 캐시된 위치 정보 사용 안함
+        }
+      );
+
+      // 컴포넌트 언마운트 시 위치 감시 중지
+      return () => {
+        navigator.geolocation.clearWatch(watchId);
+      };
     } else {
       alert('위치 정보를 사용할 수 없습니다.');
     }
@@ -51,9 +67,7 @@ function App() {
           level={3}
           style={{ width: '100vw', height: '100vh' }}
         >
-          <MapMarker position={position}>
-            <div style={{ padding: '5px', color: '#000' }}>내 위치</div>
-          </MapMarker>
+          <MapMarker position={position}></MapMarker>
         </Map>
       </div>
     </>
