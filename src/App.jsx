@@ -53,7 +53,9 @@ function App() {
 
   return (
     <>
-      <div>지도정보보기</div>
+      <div>
+        지도정보보기 {position.lat} / {position.lng}
+      </div>
       <div className="w-full h-full">
         <Map center={position} level={3} style={{ width: '100vw', height: '100vh' }}>
           <MapMarker position={position} />
